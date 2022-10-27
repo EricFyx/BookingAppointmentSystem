@@ -1,0 +1,259 @@
+/* Description: Assignment 1 */
+/* Author: Chyzien, Natalie, Lorenzo, Lam Yen Chiong */
+/* Date: 22 Sept 2020 */
+/* Validated:  4 Oct 2020*/
+
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+header{
+    height: 100px;
+    border: 1px solid #FFFFFF;
+}
+
+/* Logo */
+
+
+/* Navigation */   
+a{
+    text-decoration: none;
+}
+
+nav{
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+nav ul li{
+    background-color: #0080FF;
+    display: inline-block;
+    border-radius: 30px;
+    text-align: center;
+    padding: 12px 0px;
+    width: 170px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;   
+    position: relative; 
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+}
+
+nav ul li a{
+    color: #ffffff;
+}
+
+
+nav ul li:hover{
+    background-color: #0f4275;
+    color: #011c39;
+}
+
+
+nav ul ul{
+    display: none;
+}
+
+nav ul li:hover>ul{
+    display: block;
+    position: absolute;
+}
+
+nav ul li:hover>ul li:nth-child(1){
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
+nav ul li:hover>ul li:nth-child(2),ul li:nth-child(3),ul li:nth-child(4){
+    margin: 2px;
+}
+
+/* Banner  */
+
+
+/* Homepage */
+
+.intro{
+    height: 350px;
+    width: 90vw;
+    margin: auto;
+    display: table;
+	clear: both;
+    background-color: #011c39; /* #F0F8FF */
+    color: #FFFFFF;
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 70px;
+	margin-bottom: 10px;
+}
+
+.box0{
+	width: 15vw;
+	height: 300px;
+	float: left;
+	margin: auto;
+	margin-top: 25px;
+	margin-left: 40px;
+    background-color: white; /* #F0F8FF */
+	border-radius: 40px;
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+}
+
+.box0 p{
+	font-size: 50px;
+	color: #011c39;
+}
+
+
+cite{
+    font-family: Courier New, monospace;
+}
+
+.homepage_service{
+    height: 100vh;
+    width: 90vw;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    background-color: #F0F8FF;
+    margin-top: 80px;
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+}
+
+.homepage_service h3{
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align: center;
+    padding: 20px 10px;
+    color: #FFFFFF;
+    background-color: #0080FF;
+    width: 95vw;
+    letter-spacing: 1px;
+    margin-top: 60px;
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+}
+
+.homepage_service p{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: #011c39;
+    margin: 20px 0px;
+}
+
+.homepage_services{
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+
+.homepage_services a{
+    width: 20%;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+    transition: transform .2s;
+    height: 400px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+/* Footer */
+footer{
+    background-color: #011c39;
+    height: 360px;
+    padding-top: 20px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.section-1, .section-2, .section-3, .section-4{
+    width: 30%;
+    height: 200px;
+}
+
+.section-1{
+    padding-left: 70px;
+}
+
+.section-1 p{
+    padding-left: 40px;
+    font-size: 15px;
+}
+
+.section-1 img{
+    width: 150px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+footer div p{
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.footer-links ul{
+    list-style-type: none;
+}
+
+.footer-links li{
+    padding: 10px;
+    list-style-type: none;
+}
+
+.footer-links a{
+    color: #808080;
+}
+
+.section-4 ul li a{
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.Map{
+    position: relative;
+    width: 500px;
+    height: 300px; 
+    border:0; 
+    bottom: 20px;
+    right: 30px;
+}
+.Flower{
+    
+    width: 400px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
