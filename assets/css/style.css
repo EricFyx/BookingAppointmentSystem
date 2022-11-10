@@ -1,7 +1,7 @@
 
-
 html{
     scroll-behavior: smooth;
+    background-color: #749F82;
 }
 
 *{
@@ -12,12 +12,34 @@ html{
 
 /* Header */
 header{
-    height: 100px;
-    border: 1px solid #FFFFFF;
+    height: 80px;
 }
 
-/* Logo */
+.header {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    z-index: 1;
+    margin: 0;
+    background-color: #425F57;
+    max-height: 60px;
+  }
 
+/* Logo */
+.Logo{
+    position: relative;
+  float: left;
+  margin-left: 20px;
+  height: 95px;
+  width: 100px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+  display: flex;
+}
 
 /* Navigation */   
 a{
@@ -33,85 +55,34 @@ nav{
 }
 
 nav ul li{
-    background-color: #0080FF;
+    margin: auto;
+    margin-left: 30px      ;
     display: inline-block;
-    border-radius: 30px;
     text-align: center;
-    padding: 12px 0px;
-    width: 170px;
-    font-size: 13px;
+    padding: 15px 30px;
+    width: 220px;
+    font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-    font-weight: bold;
     letter-spacing: 2px;   
     position: relative; 
-    box-shadow: 0 5px 12px rgba(32,32,32,.3);
+    
 }
 
 nav ul li a{
-    color: #ffffff;
+	text-shadow: 1px 1px 1px black;
+    color: #CFFF8D;
 }
 
 
-nav ul li:hover{
-    background-color: #0f4275;
-    color: #011c39;
-}
 
 
-nav ul ul{
-    display: none;
-}
-
-nav ul li:hover>ul{
-    display: block;
-    position: absolute;
-}
-
-nav ul li:hover>ul li:nth-child(1){
-    margin-top: 20px;
-    margin-bottom: 2px;
-}
-
-nav ul li:hover>ul li:nth-child(2),ul li:nth-child(3),ul li:nth-child(4){
-    margin: 2px;
-}
 
 /* Banner  */
 
 
 /* Homepage */
 
-.intro{
-    height: 350px;
-    width: 90vw;
-    margin: auto;
-    display: table;
-	clear: both;
-    background-color: #011c39; /* #F0F8FF */
-    color: #FFFFFF;
-    box-shadow: 0 5px 12px rgba(32,32,32,.3);
-    border-bottom-right-radius: 70px;
-    border-top-left-radius: 70px;
-	margin-bottom: 10px;
-}
-
-.box0{
-	width: 15vw;
-	height: 300px;
-	float: left;
-	margin: auto;
-	margin-top: 25px;
-	margin-left: 40px;
-    background-color: white; /* #F0F8FF */
-	border-radius: 40px;
-    box-shadow: 0 5px 12px rgba(32,32,32,.3);
-}
-
-.box0 p{
-	font-size: 50px;
-	color: #011c39;
-}
 
 
 cite{
@@ -127,7 +98,7 @@ cite{
     flex-direction: column;
     justify-content: space-evenly;
     margin: auto;
-    background-color: #F0F8FF;
+    background-color: #A8E890;
     margin-top: 80px;
     box-shadow: 0 5px 12px rgba(32,32,32,.3);
 }
@@ -138,8 +109,8 @@ cite{
     font-size: 30px;
     text-align: center;
     padding: 20px 10px;
-    color: #FFFFFF;
-    background-color: #0080FF;
+    color: #A8E890;
+    background-color: #425F57;
     width: 95vw;
     letter-spacing: 1px;
     margin-top: 60px;
@@ -180,7 +151,7 @@ cite{
 
 /* Footer */
 footer{
-    background-color: #011c39;
+    background-color: #425F57;
     height: 360px;
     padding-top: 20px;
 }
@@ -191,28 +162,14 @@ footer{
     padding: 50px;
 }
 
-.section-1, .section-2, .section-3, .section-4{
+.section-4{
     width: 30%;
     height: 200px;
 }
 
-.section-1{
-    padding-left: 70px;
-}
-
-.section-1 p{
-    padding-left: 40px;
-    font-size: 15px;
-}
-
-.section-1 img{
-    width: 150px;
-    padding-top: 10px;
-    padding-left: 20px;
-}
 
 footer div p{
-    color: #FFFFFF;
+    color: #CFFF8D;
     font-weight: bold;
     font-size: 20px;
     padding: 10px;
@@ -232,10 +189,10 @@ footer div p{
 }
 
 .section-4 ul li a{
-    color: #FFFFFF;
+    color: #CFFF8D;
     font-weight: bold;
     font-size: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .Map{
@@ -246,11 +203,38 @@ footer div p{
     bottom: 20px;
     right: 30px;
 }
+
+
 .Flower{
-    
-    width: 400px;
-    height: 400px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+}
+
+.container{
+	width: 90%;
+	margin: auto;
+}
+
+.container-homepage1{
+    float: right;
+    width: 50%;
+	margin: auto;
+}
+
+.welcome{
+	text-align: center;
+	color:		#425F57;
+	padding-top: 0px;
+	font-size: 50px;
+	margin-bottom:10px;
+	text-shadow: 1px 1px 1px black;
+  font-weight: bold;
+}
+
+.purpose{
+	text-align: center;
+	color: 		#749F82;
+	margin-top: 80px;
+	font-size: 20px;
+	padding-bottom: 280px;
+    text-shadow: 0.5px 0.5px 0.5px black;
 }
