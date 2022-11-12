@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 12:14 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 12, 2022 at 07:10 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `user-registration`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banneradd_image`
+--
+
+CREATE TABLE `banneradd_image` (
+  `bannerID` int(11) NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banneradd_image`
+--
+
+INSERT INTO `banneradd_image` (`bannerID`, `image`) VALUES
+(1, 'cactus-plant-pot-stand-1599155636.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,11 +102,19 @@ CREATE TABLE `tbl_member` (
 --
 
 INSERT INTO `tbl_member` (`id`, `username`, `password`, `cpassword`, `email`, `create_at`, `contact`, `address`, `state`, `city`, `image`) VALUES
-(4, 'Abdullah', '$2y$10$qI2A6CRnjVXzS77sb54RI.5qgH2hBB9rD1F4DNJeKx/.M112bzGkq', '$2y$10$WfhatBPKClGxqaEuHVdKLuKn1cuVptplXNSUgqF6BNnd7u51JJWla', 'a@gmail.com', '2022-10-26 10:05:30', '123456789', 'deLOFT', 'Sarawak', 'Kuching', '9275-Abdullah.jfif');
+(4, 'Abdullah', '$2y$10$qI2A6CRnjVXzS77sb54RI.5qgH2hBB9rD1F4DNJeKx/.M112bzGkq', '$2y$10$WfhatBPKClGxqaEuHVdKLuKn1cuVptplXNSUgqF6BNnd7u51JJWla', 'a@gmail.com', '2022-10-26 10:05:30', '123456789', 'deLOFT', 'Sarawak', 'Kuching', '9275-Abdullah.jfif'),
+(7, 'admin', '$2y$10$RwGT2N.toosBHmxOXQjiQO8QUgytLfbr1oyMEklNF41bj5/iMl3Vi', '$2y$10$QGEUT8XjICeSHzNoFpR/V.dKnBiHf46XxrfmobqkzV3bTuaCF3c0K', 'admin@gmail.com', '2022-11-07 09:18:09', '', '', '', '', ''),
+(8, 'user1', '$2y$10$4CQN3pbge55CKf.H11g9CeqWq.gWRIfT6NR/0p2FHK03R9WS3IECq', '$2y$10$1TeHsVx9X7gbRUiJdjHc..cRb9z9YULyrIJixxHCpY6udJbmFpDbG', 'user1@gmail.com', '2022-11-07 09:41:47', '0123456789', 'lorong unta 11, taman southern,', 'sabahh', 'kota kinabalu', '4757-cactus-plant-pot-stand-1599155636.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `banneradd_image`
+--
+ALTER TABLE `banneradd_image`
+  ADD PRIMARY KEY (`bannerID`);
 
 --
 -- Indexes for table `preferance`
@@ -113,6 +139,12 @@ ALTER TABLE `tbl_member`
 --
 
 --
+-- AUTO_INCREMENT for table `banneradd_image`
+--
+ALTER TABLE `banneradd_image`
+  MODIFY `bannerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `preferance`
 --
 ALTER TABLE `preferance`
@@ -128,7 +160,7 @@ ALTER TABLE `purchased`
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
