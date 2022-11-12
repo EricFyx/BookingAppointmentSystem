@@ -10,9 +10,7 @@ include("dbcon.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Visitor Booking Appointment System</title>
 </head>
-<!--End of head-->
 
-<!--Start of body-->
 
 <body>
     <!--Header-->
@@ -22,9 +20,11 @@ include("dbcon.php");
 
         <ul class="header">
             <li><a href="home.php">Profile</a></li>
+            <li><a href="">Notification</a></li>
             <li><a href="">Booking</a></li>
             <li><a href="">View Booking</a></li>
         </ul>
+        
        </nav>
       </header>
 
@@ -65,11 +65,13 @@ include("dbcon.php");
         ?>
     </div>
             <h3>Items</h3>
-           
+        <form>
+            <input type="text" name="search" placeholder="Search">
+        </form>
         </section>
-
+        
         <section>
-
+       
         </section>
 
 
