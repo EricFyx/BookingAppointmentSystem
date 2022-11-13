@@ -4,17 +4,14 @@
 
     $query_register = mysqli_query($con," select * from tbl_member");
     $query_product = mysqli_query($conn, "select * from products");
-<<<<<<< HEAD
-    $query_login = mysqli_query($con, "select * from login");
+    //$query_login = mysqli_query($con, "select * from login");
 
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
-    $query_login_count = mysqli_num_rows($query_login);
-=======
+    //$query_login_count = mysqli_num_rows($query_login);
 
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
->>>>>>> defa5e8ac28d092f84438998d709c00dae96734c
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +65,7 @@
 		</div>
 		<div class = "box0">
 			<h1>Today Login</h1>
-			<p><?php echo $query_login_count; ?></p>
+			<p></p>
 		</div>
 		<div class = "box0">
 			<h1>Visitor Pattern</h1>
