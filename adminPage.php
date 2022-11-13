@@ -14,8 +14,10 @@
         <nav class="header">
 		<div><img class="Logo" src="images/Logo.png"></div>
             <ul>
+                <li><a href="adminPage.php">Home</a></li>
                 <li><a href="banneradsui.php">Banner</a></li>
                 <li><a href="enhancement.html">Booking</a></li>
+                <li><a href="Product.php">Product</a></li>
 				<li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
