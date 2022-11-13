@@ -30,11 +30,14 @@ if(isset($_POST['submit'])){
     $pass_decode = password_verify($password, $db_pass);
 
     if($pass_decode && $_SESSION["email"] == "admin@gmail.com"){
-      echo "login successful";
-	  header("location:adminPage.php");
+      	echo "login successful";
+	  	header("location:adminPage.php");
       ?>
       <?php
     }elseif($pass_decode){
+		$insertquery = "INSERT INTO `login` (`email`) VALUES ('$email');";
+
+      	$iquery = mysqli_query($con, $insertquery);
 		header("location:customerPage.php");
     }else{
 		echo "Password Incorrect";
