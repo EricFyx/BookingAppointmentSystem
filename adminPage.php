@@ -1,3 +1,16 @@
+<?php
+    require_once('dbcon.php');
+    @include 'config.php';
+
+    $query_register = mysqli_query($con," select * from tbl_member");
+    $query_product = mysqli_query($conn, "select * from products");
+    $query_login = mysqli_query($con, "select * from login");
+
+    $query_register_count = mysqli_num_rows($query_register);
+    $query_product_count = mysqli_num_rows($query_product);
+    $query_login_count = mysqli_num_rows($query_login);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,15 +54,15 @@
 		<aside class="intro">
         <div class = "box0">
 			<h1>Total</h1>
-			<p>88</p>
+			<p><?php echo $query_register_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Crowded Season</h1>
-			<p>August</p>
+			<h1>Purchase</h1>
+			<p><?php echo $query_product_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Today Booking</h1>
-			<p>888</p>
+			<h1>Today Login</h1>
+			<p><?php echo $query_login_count; ?></p>
 		</div>
 		<div class = "box0">
 			<h1>Visitor Pattern</h1>
