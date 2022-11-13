@@ -1,11 +1,13 @@
 <?php
 include("dbcon.php");
+include("config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/productcss.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Visitor Booking Appointment System</title>
@@ -53,6 +55,7 @@ include("dbcon.php");
     <div>
         <section class="homepage_service">
         <div>
+
         <?php
         $query = "select * from banneradd_image ";
         $result = mysqli_query($con, $query);
@@ -63,15 +66,39 @@ include("dbcon.php");
         <?php
         }
         ?>
+        <h3>Items</h3>
     </div>
-            <h3>Items</h3>
-        <form>
-            <input type="text" name="search" placeholder="Search">
-        </form>
         </section>
         
         <section>
-       
+            <div class = "container">
+        <form action ="searchProduct.php" method = "post">
+            <input type ="text" name="search" placeholder="Search Products">
+            <input id  type = "submit">
+
+            <?php
+            $select = mysqli_query($conn, "SELECT * FROM products");
+        ?>
+        <div class="product-display">
+            <table class="product-display-table">
+                <thead>
+                    <tr>
+                        <th>product image</th>
+                        <th>product name</th>
+                        <th>product price</th>
+                    </tr>
+                </thead>
+                <?php while($row = mysqli_fetch_assoc($select)){ ?>
+                    <tr>
+                        <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td>$<?php echo $row['price']; ?>/-</td>
+                        </tr>
+                <?php } ?>
+            </table>
+        </div>
+        </form>
+            </div>
         </section>
 
 
