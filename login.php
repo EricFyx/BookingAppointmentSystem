@@ -17,8 +17,6 @@ if(isset($_POST['submit'])){
 
   if($email_count){
     $email_pass = mysqli_fetch_assoc($query);
-	//$row = mysqli_fetch_array($query);
-
     $db_pass = $email_pass['password'];
 
     $_SESSION['username'] = $email_pass['username'];
@@ -35,7 +33,8 @@ if(isset($_POST['submit'])){
       ?>
       <?php
     }elseif($pass_decode){
-		
+		$insertquery = "INSERT INTO `login` (`email`, `time`) VALUES ('$email', current_timestamp());";
+      	$iquery = mysqli_query($con, $insertquery);
 		header("location:customerPage.php");
     }else{
 		echo "Password Incorrect";
