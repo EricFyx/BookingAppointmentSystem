@@ -1,6 +1,7 @@
 <?php
 include("dbcon.php");
 include("config.php");
+include("30minBookingNoti.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +22,11 @@ include("config.php");
            <div><img class="Logo" src="images/Logo.png"></div>
 
         <ul class="header">
+            <li><a href="customerPage.php">Home</a></li>
             <li><a href="home.php">Profile</a></li>
             <li><a href="">Notification</a></li>
-            <li><a href="">Booking</a></li>
-            <li><a href="">View Booking</a></li>
+            <li><a href="userBooking.php">Booking</a></li>
+            <li><a href="userViewAppointment.php">View Appointment</a></li>
         </ul>
         
        </nav>

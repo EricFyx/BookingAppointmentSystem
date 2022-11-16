@@ -51,11 +51,13 @@ if(isset($_GET['delete'])){
     <nav class="header">
         <div><img class="Logo" src="images/Logo.png"></div>
         <ul>
-            <li><a href="adminPage.php">Home</a></li>
+        <li><a href="adminPage.php">Home</a></li>
             <li><a href="banneradsui.php">Banner</a></li>
-            <li><a href="enhancement.html">Booking</a></li>
+            <li><a href="adminBooking.php">Booking</a></li>
+            <li><a href="adminViewAppointment.php">View Appointments</a></li>
             <li><a href="Product.php">Product</a></li>
             <li><a href="logout.php">Logout</a></li>
+            <li><a href="view_feedback.php">View User Feedback</a></li>
         </ul>
     </nav>
 </header>
@@ -83,7 +85,7 @@ if(isset($message))
             <form action="<?php $_SERVER['PHP_SELF']?>" method= "post" enctype="multipart/form-data">
                 <h3>Add New Product</h3>
                 <input type="text" placeholder="Enter Product Name" name = "product_name" class="box">
-                <input type="number" placeholder="Enter Product Price" name = "product_price" class="box">
+                <input type="number" placeholder="Enter Product Price (RM)" name = "product_price" class="box">
                 <input type="file" accept= "image/png, image/jpg, image/jpeg" name = "product_image" class="box">
                 <input type="submit" class = "btn" name = "add_product" value = "add product">
             </form>
@@ -106,7 +108,7 @@ if(isset($message))
                     <tr>
                         <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
                         <td><?php echo $row['name']; ?></td>
-                        <td>$<?php echo $row['price']; ?>/-</td>
+                        <td>RM <?php echo $row['price']; ?>/-</td>
                         <td>
                             <a href="admin_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i class="fas fa-edit"></i> edit </a>
                             <a href="admin_page.php?delete=<?php echo $row['id']; ?>" class="btn"> <i class="fas fa-trash"></i> delete </a>

@@ -1,20 +1,19 @@
 <?php
     require_once('dbcon.php');
     @include 'config.php';
-
+    //include('30minBookingNoti.php');
+    
     $query_register = mysqli_query($con," select * from tbl_member");
     $query_product = mysqli_query($conn, "select * from products");
-<<<<<<< HEAD
-    $query_login = mysqli_query($con, "select * from login");
-
+    $query_login =  mysqli_query($con, "select * from login");
+    $query_booking = mysqli_query($con, "select * from tbl_booking");
+    $query_appointment = mysqli_query($con, "select * from tbl_appointment");
+    
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
     $query_login_count = mysqli_num_rows($query_login);
-=======
-
-    $query_register_count = mysqli_num_rows($query_register);
-    $query_product_count = mysqli_num_rows($query_product);
->>>>>>> defa5e8ac28d092f84438998d709c00dae96734c
+    $query_booking_count = mysqli_num_rows($query_booking);
+    $query_appointment_count = mysqli_num_rows($query_appointment);
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +32,13 @@
         <nav class="header">
 		<div><img class="Logo" src="images/Logo.png"></div>
             <ul>
-                <li><a href="adminPage.php">Home</a></li>
-                <li><a href="banneradsui.php">Banner</a></li>
-                <li><a href="enhancement.html">Booking</a></li>
-                <li><a href="Product.php">Product</a></li>
-				<li><a href="logout.php">Logout</a></li>
+            <li><a href="adminPage.php">Home</a></li>
+            <li><a href="banneradsui.php">Banner</a></li>
+            <li><a href="adminBooking.php">Booking</a></li>
+            <li><a href="adminViewAppointment.php">View Appointments</a></li>
+            <li><a href="Product.php">Product</a></li>
+            <li><a href="logout.php">Logout</a></li>
+            <li><a href="view_feedback.php">View User Feedback</a></li>
             </ul>
         </nav>
 
@@ -59,24 +60,24 @@
         <h1>Report</h1>
 		<aside class="intro">
         <div class = "box0">
-			<h1>Total</h1>
+			<h1>Total Register</h1>
 			<p><?php echo $query_register_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Purchase</h1>
+			<h1>Total Product</h1>
 			<p><?php echo $query_product_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Today Login</h1>
+			<h1>Total Login</h1>
 			<p><?php echo $query_login_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Visitor Pattern</h1>
-			<p>8</p>
-		</div>
-		<div class = "box0">
 			<h1>Total Booking</h1>
-			<p>8888</p>
+			<p><?php echo $query_booking_count; ?></p>
+		</div>
+        <div class = "box0">
+			<h1>Total Appointments</h1>
+			<p><?php echo $query_appointment_count; ?></p>
 		</div>
     </aside>
     </section>
