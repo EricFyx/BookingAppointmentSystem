@@ -85,6 +85,25 @@
 
 
     }
+
+    if(isset($_POST['update']))
+    {
+        $filename = $_FILES["uploadfile"]["name"];
+        $tempname = $_FILES["uploadfile"]["tmp_name"];
+        $folder = "./Advertisement_image/" . $filename;
+
+        $sql = "UPDATE banneradd_image SET image = '$filename' where bannerID = 1";
+
+        mysqli_query($con, $sql);
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('Update successful!')</script>";
+        } else {
+            echo "<script defer>alert('Update failed!')</script>";
+        }
+
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -127,6 +146,7 @@
             </div>
 
             <div class="button-group">
+                <input type="text" placeholder="Enter Advertisement Description" name = "image_ad" class="box">
                 <button class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
                 <button class="btn btn-primary" type="submit" name="update">UPDATE</button>
                 <button  class="btn btn-primary" type="submit" name="back">

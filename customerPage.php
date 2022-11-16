@@ -115,7 +115,7 @@ include("30minBookingNoti.php");
 
             <div class="section-4">
                 <ul class="footer-links">
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="feedback.php">Contact Us</a></li>
                     <li><a href="">Location</a></li>
                 </ul>
             </div>
