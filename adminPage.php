@@ -1,19 +1,28 @@
 <?php
     require_once('dbcon.php');
     @include 'config.php';
-    $date_now = date("Y-m-d");
+    $date_now = date("m-dd");
     $login_count = 0;
+    $booking_count = 0;
 
     $query_register = mysqli_query($con," select * from tbl_member");
     $query_product = mysqli_query($conn, "select * from products");
-    $query_login =  mysqli_query($con, "select time from login");
+    $query_login =  mysqli_query($con, "SELECT DAY(time) from login");
+    $query_booking = mysqli_query($con, "select * from tbl_booking");
+    $query_month_booking = mysqli_query($con, "SELECT MONTH(bookingDate) from tbl_booking");
     
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
-    while($row = mysqli_fetch_array($query_login)){
+    $query_booking_count = mysqli_num_rows($query_booking);
+    foreach($query_login as $row){
         if($row = $date_now){
-            $login_count += 1;
-        }
+                $login_count += 1;
+        };
+    }
+    foreach($query_month_booking as $roww){
+        if($roww = $date_now){
+            $booking_count += 1;
+        };
     }
 ?>
 
@@ -60,7 +69,7 @@
         <h1>Report</h1>
 		<aside class="intro">
         <div class = "box0">
-			<h1>Total</h1>
+			<h1>Total Register</h1>
 			<p><?php echo $query_register_count; ?></p>
 		</div>
 		<div class = "box0">
@@ -73,11 +82,11 @@
 		</div>
 		<div class = "box0">
 			<h1>Visitor Pattern</h1>
-			<p>8</p>
+			<p><?php echo $query_booking_count; ?></p>
 		</div>
 		<div class = "box0">
 			<h1>Total Booking</h1>
-			<p>8888</p>
+			<p><?php echo $booking_count; ?></p>
 		</div>
     </aside>
     </section>
