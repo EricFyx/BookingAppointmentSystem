@@ -1,20 +1,17 @@
 <?php
     require_once('dbcon.php');
     @include 'config.php';
-    $date_now = date("Y-m-d");
-    $login_count = 0;
-
     $query_register = mysqli_query($con," select * from tbl_member");
     $query_product = mysqli_query($conn, "select * from products");
-    $query_login =  mysqli_query($con, "select time from login");
+    $query_login =  mysqli_query($con, "select * from login");
+    $query_booking = mysqli_query($con, "select * from tbl_booking");
+    $query_appointment = mysqli_query($con, "select * from tbl_appointment");
     
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
-    while($row = mysqli_fetch_array($query_login)){
-        if($row = $date_now){
-            $login_count += 1;
-        }
-    }
+    $query_login_count = mysqli_num_rows($query_login);
+    $query_booking_count = mysqli_num_rows($query_booking);
+    $query_appointment_count = mysqli_num_rows($query_appointment);
 ?>
 
 <!DOCTYPE html>
@@ -60,24 +57,24 @@
         <h1>Report</h1>
 		<aside class="intro">
         <div class = "box0">
-			<h1>Total</h1>
+			<h1>Total Register</h1>
 			<p><?php echo $query_register_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Purchase</h1>
+			<h1>Total Product</h1>
 			<p><?php echo $query_product_count; ?></p>
 		</div>
 		<div class = "box0">
-			<h1>Today Login</h1>
-			<p><?php echo $login_count; ?></p>
-		</div>
-		<div class = "box0">
-			<h1>Visitor Pattern</h1>
-			<p>8</p>
+			<h1>Total Login</h1>
+			<p><?php echo $query_login_count; ?></p>
 		</div>
 		<div class = "box0">
 			<h1>Total Booking</h1>
-			<p>8888</p>
+			<p><?php echo $query_booking_count; ?></p>
+		</div>
+        <div class = "box0">
+			<h1>Total Appointments</h1>
+			<p><?php echo $query_appointment_count; ?></p>
 		</div>
     </aside>
     </section>
