@@ -51,42 +51,8 @@ if (isset($_POST['submit'])) {
 			$runSQL = mysqli_query($con,$sql);
 
 
-			$selectUser = "SELECT tbl_member.loginTime,tbl_appointment.appointmentDate ,tbl_appointment.appointmentStartTime from tbl_member LEFT JOIN  tbl_appointment ON tbl_member.email = tbl_appointment.customerEmail where tbl_member.email = '$email' and tbl_appointment.customerEmail = '$email' ";
-			$run = mysqli_query($con, $selectUser);
-			date_default_timezone_set('Asia/Brunei');
-            $date = date('H:i:s');
-            $currentTS = $date;
-
-			foreach($run as $row)
-			{
-				$cLoginTime = date('H:i:s',strtotime($row['loginTime']));
-				$aDate = date('Y-m-d',strtotime($row['appointmentDate']));
-				$aStartTime = date('H:i:s',strtotime($row['appointmentStartTime']));
-				$diff = strtotime($aStartTime) - strtotime($currentTS);
-				echo $diff;
-				if($diff == 3700)
-				{
-					printf("hello");
-					$mail->addAddress($_SESSION['email']);
-        			$adminMail->addAddress('testuser006x@gmail.com');
-
-        			$adminMail->isHTML();
-        			$adminMail->Subject = "Appointment Notice <<ADMIN>>";
-        			$adminMail->Body = "<h2> your appointment is coming near</h2>
-        			<h2>30 Mins till your appointment starts</h2>
-					<h2>Attendee email: $email </h2>
-					<h2>Appointment Date: $aDate </h2>
-					<h2>Appointment Start Time: $aStartTime </h2>";
-
-        			$mail->isHTML();
-        			$mail->Subject = "Appointment Notice";
-        			$mail->Body = "<h2> your appointment is coming near</h2>
-        			<h2>30 Mins till your appointment starts</h2>
-					<h2>Appointment Date: $aDate </h2>
-					<h2>Appointment Start Time: $aStartTime </h2>";
-				}
-
-				header("location:customerPage.php");
+			
+			header("location:customerPage.php");
 			}
 		}
 		else {
