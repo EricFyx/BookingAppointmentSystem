@@ -21,11 +21,10 @@ include("config.php");
            <div><img class="Logo" src="images/Logo.png"></div>
 
         <ul class="header">
-            <li><a href="customerPage.php">Home</a></li>
             <li><a href="home.php">Profile</a></li>
             <li><a href="">Notification</a></li>
-            <li><a href="userBooking.php">Booking</a></li>
-            <li><a href="userViewAppointment.php">View Appointment</a></li>
+            <li><a href="">Booking</a></li>
+            <li><a href="">View Booking</a></li>
         </ul>
         
        </nav>
@@ -73,12 +72,20 @@ include("config.php");
         
         <section>
             <div class = "container">
-        <form action ="searchProduct.php" method = "post">
+            
+        <form method = "POST">
             <input type ="text" name="search" placeholder="Search Products">
-            <input id  type = "submit">
+            <input  type = "submit">      
+        </form>
+        <form action="customerPage.php">
+            <input type="submit" value="Back">
+        </form>
+
 
             <?php
-            $select = mysqli_query($conn, "SELECT * FROM products");
+            $search = $_POST['search'];
+            $query = "SELECT * FROM products WHERE name LIKE '%$search%'";
+            $result = mysqli_query($conn, $query);
         ?>
         <div class="product-display">
             <table class="product-display-table">
@@ -89,7 +96,7 @@ include("config.php");
                         <th>product price</th>
                     </tr>
                 </thead>
-                <?php while($row = mysqli_fetch_assoc($select)){ ?>
+                <?php while($row = mysqli_fetch_assoc($result)){ ?>
                     <tr>
                         <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
                         <td><?php echo $row['name']; ?></td>
@@ -98,7 +105,7 @@ include("config.php");
                 <?php } ?>
             </table>
         </div>
-        </form>
+        
             </div>
         </section>
 
@@ -114,7 +121,7 @@ include("config.php");
 
             <div class="section-4">
                 <ul class="footer-links">
-                    <li><a href="feedback.php">Contact Us</a></li>
+                    <li><a href="">Contact Us</a></li>
                     <li><a href="">Location</a></li>
                 </ul>
             </div>
@@ -162,3 +169,6 @@ include("config.php");
 </body>
 
 </html>
+
+
+

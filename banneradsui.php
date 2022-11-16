@@ -8,6 +8,7 @@
 
         $sql = "INSERT INTO  banneradd_image (image) VALUES ('$filename')";
 
+
         mysqli_query($con, $sql);
 
         if (move_uploaded_file($tempname, $folder)) {
@@ -15,6 +16,25 @@
         } else {
             echo "<script defer>alert('Upload failed!')</script>";
         }
+    }
+
+    if(isset($_POST['update']))
+    {
+        $filename = $_FILES["uploadfile"]["name"];
+        $tempname = $_FILES["uploadfile"]["tmp_name"];
+        $folder = "./Advertisement_image/" . $filename;
+
+        $sql = "UPDATE banneradd_image SET image = '$filename' where bannerID = 1";
+
+        mysqli_query($con, $sql);
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('Update successful!')</script>";
+        } else {
+            echo "<script defer>alert('Update failed!')</script>";
+        }
+
+
     }
 ?>
 
@@ -37,11 +57,12 @@
         <nav class="header">
 		<div><img class="Logo" src="images/Logo.png"></div>
             <ul>
-                <li><a href="adminPage.php">Home</a></li>
-                <li><a href="banneradsui.php">Banner</a></li>
-                <li><a href="enhancement.html">Booking</a></li>
-                <li><a href="Product.php">Product</a></li>
-				<li><a href="logout.php">Logout</a></li>
+            <li><a href="adminPage.php">Home</a></li>
+            <li><a href="banneradsui.php">Banner</a></li>
+            <li><a href="adminBooking.php">Booking</a></li>
+            <li><a href="adminViewAppointment.php">View Appointments</a></li>
+            <li><a href="Product.php">Product</a></li>
+            <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
 
@@ -56,7 +77,9 @@
             </div>
 
             <div class="button-group">
+                <input type="text" placeholder="Enter Advertisement Description" name = "image_ad" class="box">
                 <button class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
+                <button class="btn btn-primary" type="submit" name="update">UPDATE</button>
                 <button  class="btn btn-primary" type="submit" name="back">
                     <a href="adminPage.php">BACK</a>
                 </button>

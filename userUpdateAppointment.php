@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+@include 'dbcon.php';
 
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
@@ -28,12 +28,11 @@ if(isset($_GET['delete'])){
         <nav class="header">
 		<div><img class="Logo" src="images/Logo.png"></div>
             <ul>
-            <li><a href="adminPage.php">Home</a></li>
-            <li><a href="banneradsui.php">Banner</a></li>
-            <li><a href="adminBooking.php">Booking</a></li>
-            <li><a href="adminViewAppointment.php">View Appointments</a></li>
-            <li><a href="Product.php">Product</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="customerPage.php">Home</a></li>
+            <li><a href="home.php">Profile</a></li>
+            <li><a href="">Notification</a></li>
+            <li><a href="userBooking.php">Booking</a></li>
+            <li><a href="userViewAppointment.php">View Appointment</a></li>
             </ul>
         </nav>
 
@@ -41,36 +40,34 @@ if(isset($_GET['delete'])){
 
     <div class="ProductCover">
 		<div class="CoverText">
-			<h1>Products</h1>
-			<div class = "addBTN">
-				<a href="admin_page.php" class="Categories">+ Add Product</a>
-			</div>
+			<h1>View Available Appointments</h1>
 		</div>
 	</div>
 
     <?php
-        $select = mysqli_query($conn, "SELECT * FROM products");
+        $select = mysqli_query($con, "SELECT * FROM tbl_booking ORDER BY bookingDate");
     ?>
 
     <div class="product-display">
             <table class="product-display-table">
-                <thead>
+            <thead>
                     <tr>
-                        <th>product image</th>
-                        <th>product name</th>
-                        <th>product price</th>
-                        <th>action</th>
+                        <th>Booking Date</th>
+                        <th>Booking Day</th>
+                        <th>Booking Start Time</th>
+                        <th>Booking End Time</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
+
                 <?php while($row = mysqli_fetch_assoc($select)){ ?>
                     <tr>
-                        <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
-                        <td><?php echo $row['name']; ?></td>
-                        <td>RM <?php echo $row['price']; ?>/-</td>
-                        <td>
-                            <a href="admin_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i class="fas fa-edit"></i> edit </a>
-                            <a href="admin_page.php?delete=<?php echo $row['id']; ?>" class="btn"> <i class="fas fa-trash"></i> delete </a>
-                        </td>
+                    <td><?php echo $row['bookingDate']; ?></td>
+                        <td><?php echo date('l', strtotime($row["bookingDate"]));?></td>
+                        <td><?php echo date('h:i:sa',strtotime($row['bookingStartTime'])); ?></td>
+                        <td><?php echo date('h:i:sa',strtotime($row['bookingEndTime'])); ?></td>
+                        <td><a href="userUpdateAppointmentAdd.php?edit=<?php echo $row['bookingID']; ?>" class="btn"> <i class="fas fa-edit"></i> book appointment </a></td>
+
                     </tr>
                 <?php } ?>
             </table>

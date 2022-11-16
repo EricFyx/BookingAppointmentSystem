@@ -1,20 +1,20 @@
 <?php
     require_once('dbcon.php');
     @include 'config.php';
+    $date_now = date("Y-m-d");
+    $login_count = 0;
 
     $query_register = mysqli_query($con," select * from tbl_member");
     $query_product = mysqli_query($conn, "select * from products");
-<<<<<<< HEAD
-    $query_login = mysqli_query($con, "select * from login");
-
+    $query_login =  mysqli_query($con, "select time from login");
+    
     $query_register_count = mysqli_num_rows($query_register);
     $query_product_count = mysqli_num_rows($query_product);
-    $query_login_count = mysqli_num_rows($query_login);
-=======
-
-    $query_register_count = mysqli_num_rows($query_register);
-    $query_product_count = mysqli_num_rows($query_product);
->>>>>>> defa5e8ac28d092f84438998d709c00dae96734c
+    while($row = mysqli_fetch_array($query_login)){
+        if($row = $date_now){
+            $login_count += 1;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +33,12 @@
         <nav class="header">
 		<div><img class="Logo" src="images/Logo.png"></div>
             <ul>
-                <li><a href="adminPage.php">Home</a></li>
-                <li><a href="banneradsui.php">Banner</a></li>
-                <li><a href="enhancement.html">Booking</a></li>
-                <li><a href="Product.php">Product</a></li>
-				<li><a href="logout.php">Logout</a></li>
+            <li><a href="adminPage.php">Home</a></li>
+            <li><a href="banneradsui.php">Banner</a></li>
+            <li><a href="adminBooking.php">Booking</a></li>
+            <li><a href="adminViewAppointment.php">View Appointments</a></li>
+            <li><a href="Product.php">Product</a></li>
+            <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
 
@@ -68,7 +69,7 @@
 		</div>
 		<div class = "box0">
 			<h1>Today Login</h1>
-			<p><?php echo $query_login_count; ?></p>
+			<p><?php echo $login_count; ?></p>
 		</div>
 		<div class = "box0">
 			<h1>Visitor Pattern</h1>
