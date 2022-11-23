@@ -41,6 +41,160 @@
             <li><a href="view_feedback.php">View User Feedback</a></li>
             </ul>
         </nav>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart2);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart3);
+
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Total Register'],
+            <?php 
+                $register = "SELECT  * from tbl_member ORDER BY create_at ASC";
+                $res_register = mysqli_query($con, $register);
+                $count_register = 0;
+                $previous_date = date("d-m-y");
+                $arrayRegister = array();
+                while($row = mysqli_fetch_array($res_register)){$arrayRegister[] = $row;}
+                foreach($arrayRegister as $keyA => $data){
+                    $count_register++;
+                    $date = $data['create_at'];
+                    $newDate = date("d-m-Y", strtotime($date));
+                    if($previous_date != $newDate){
+                        ?>
+                        ['<?php echo $newDate;?>', <?php echo $count_register; ?>],
+                        <?php 
+                        $count_register++;
+                    }
+                    $previous_date = $newDate;
+                }
+                
+            ?>
+        ]);
+
+        var options = {
+          title: 'Amount',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+      
+        function drawChart1() {
+            var data1 = google.visualization.arrayToDataTable([
+                ['Date', 'Total Login'],
+                <?php 
+                $login = "SELECT  * from login ORDER BY time ASC";
+                $res_login = mysqli_query($con, $login);
+                $count_login = 0;
+                $previous_date = date("d-m-y");
+                $arrayLogin = array();
+                while($row = mysqli_fetch_array($res_login)){$arrayLogin[] = $row;}
+                foreach($arrayLogin as $keyB => $data_login){      
+                    $count_login++;              
+                    $date_login = $data_login['time'];
+                    $newDate_login = date("d-m-Y", strtotime($date_login));
+                    if($previous_date != $newDate_login){
+                        ?>
+                        ['<?php echo $newDate_login;?>', <?php echo $count_login; ?>],
+                        <?php  
+                    }
+                    $previous_date = $newDate_login;
+                }
+                ?>
+            ]);
+
+            var options1 = {
+            title: 'Amount',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+            };
+
+            var chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+
+            chart1.draw(data1, options1);
+        }
+                
+        function drawChart2() {
+            var data2 = google.visualization.arrayToDataTable([
+                ['Date', 'Total Booking'],
+                <?php 
+                $booking = "SELECT  * from tbl_booking ORDER BY bookingDate ASC";
+                $res_booking = mysqli_query($con, $booking);
+                $count_booking = 0;
+                $previous_date = date("d-m-y");
+                $arrayBooking = array();
+                while($row = mysqli_fetch_array($res_booking)){$arrayBooking[] = $row;}
+                foreach($arrayBooking as $keyB => $data_booking){      
+                    $count_booking++;              
+                    $date_booking = $data_booking['bookingDate'];
+                    $newDate_booking = date("d-m-Y", strtotime($date_booking));
+                    if($previous_date != $newDate_booking){
+                        ?>
+                        ['<?php echo $newDate_booking;?>', <?php echo $count_booking; ?>],
+                        <?php  
+                    }
+                    $previous_date = $newDate_booking;
+                }
+                ?>
+            ]);
+
+            var options2 = {
+            title: 'Amount',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+            };
+
+            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+            chart2.draw(data2, options2);
+        }
+
+        function drawChart3() {
+            var data3 = google.visualization.arrayToDataTable([
+                ['Date', 'Total Appointment'],
+                <?php 
+                $appointment = "SELECT  * from tbl_appointment ORDER BY appointmentDate ASC";
+                $res_appointment = mysqli_query($con, $appointment);
+                $count_appointment = 0;
+                $previous_date = date("d-m-y");
+                $arrayAppointment = array();
+                while($row = mysqli_fetch_array($res_appointment)){$arrayAppointment[] = $row;}
+                foreach($arrayAppointment as $keyB => $data_appointment){      
+                    $count_appointment++;              
+                    $date_appointment = $data_appointment['appointmentDate'];
+                    $newDate_appointment = date("d-m-Y", strtotime($date_appointment));
+                    if($previous_date != $newDate_appointment){
+                        ?>
+                        ['<?php echo $newDate_appointment;?>', <?php echo $count_appointment; ?>],
+                        <?php  
+                    }
+                    $previous_date = $newDate_appointment;
+                }
+                ?>
+            ]);
+
+            var options3 = {
+            title: 'Amount',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+            };
+
+            var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+
+            chart3.draw(data3, options3);
+        }
+    </script>
+
 
     </header>
 	
@@ -81,6 +235,10 @@
 		</div>
     </aside>
     </section>
+    <div id="curve_chart" style=" width: 100%; height: 500px"></div>
+    <div id="curve_chart1" style=" width: 100%; height: 500px"></div>
+    <div id="curve_chart2" style=" width: 100%; height: 500px"></div>
+    <div id="curve_chart3" style=" width: 100%; height: 500px"></div>
 	<footer>
         <section class=" footer">
 

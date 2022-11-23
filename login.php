@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 	} else {
 		echo "Invalid Email";
 	}
-}
+
 
 ?>
 <HTML>
